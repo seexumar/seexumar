@@ -7,6 +7,7 @@
 
 > Most of my work lives in private repos. Each row above is one of them: name redacted, stack and last activity visible.
 > The day a repo goes public, it flips to **DECLASSIFIED** automatically.
+> Forks only appear (**◆ FORK +N**) when I've shipped real commits on top of upstream, e.g. [vlc-android](https://github.com/seexumar/vlc-android) with YouTube link download.
 
 ### Clearance
 | | |
