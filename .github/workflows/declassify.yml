@@ -1,0 +1,20 @@
+name: declassify
+on:
+  schedule: [{ cron: "0 6 * * *" }]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python generate.py
+        env:
+          # PAT with read-only "Metadata" on all repos; falls back to public-only view
+          GH_TOKEN: ${{ secrets.GH_TOKEN || github.token }}
+      - run: |
+          git config user.name "declassify-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add declassified.svg
+          git diff --cached --quiet || (git commit -m "chore: update case file" && git push)
